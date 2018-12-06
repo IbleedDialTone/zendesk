@@ -477,12 +477,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				menuItems,
 				function(item) {
 					item.classList.remove('d-none');
-
-					item.addEventListener('click', function(event) {
-						item.classList.toggle('active');
-					});
 				}
 			);
+
+			const onClickOutsideMenu = function(node) {
+					node.classList.remove('active');
+				};
+
+			const onClickInsideMenu = function(node, event) {
+					if (event.target === node || event.target === node.firstElementChild) {
+						node.classList.toggle('active');
+					} else {
+						node.classList.add('active');
+					}
+				};
+
+			Liferay.clickOutside(menuItems, onClickOutsideMenu, onClickInsideMenu);
 
 			const documentElementLang = document.documentElement.lang;
 

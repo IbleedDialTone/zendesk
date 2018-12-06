@@ -16,7 +16,7 @@ export {addLocaleParamToURI} from './helpers/locale-conversion';
 
 export {default as throttle} from 'lodash.throttle';
 
-export {MegaMenu} from 'liferay-help-center-megamenu';
+export {clickOutside, MegaMenu} from 'liferay-help-center-megamenu';
 
 export {default as Alert} from './components/Alert';
 export {default as CallToAction} from './components/CallToAction';
