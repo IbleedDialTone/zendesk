@@ -480,17 +480,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				}
 			);
 
+			const body = document.querySelector('body');
+
 			const onClickOutsideMenu = function(node) {
-					node.classList.remove('active');
-				};
+				body.classList.remove('overlay');
+
+				node.classList.remove('active');
+			};
 
 			const onClickInsideMenu = function(node, event) {
-					if (event.target === node || event.target === node.firstElementChild) {
-						node.classList.toggle('active');
-					} else {
-						node.classList.add('active');
-					}
-				};
+				if (event.target === node || event.target === node.firstElementChild) {
+					body.classList.toggle('overlay');
+
+					node.classList.toggle('active');
+				} else {
+					body.classList.add('overlay');
+
+					node.classList.add('active');
+				}
+			};
 
 			Liferay.clickOutside(menuItems, onClickOutsideMenu, onClickInsideMenu);
 
